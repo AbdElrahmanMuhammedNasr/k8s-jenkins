@@ -12,18 +12,18 @@ pipeline{
 
     stage('change') {
      steps {
-       sh "chmod +x mvn"
+       sh "chmod +x mvnw"
       }
     }
 
      stage('clean') {
          steps {
-           sh "mvn  clean"
+           sh "./mvnw  clean"
         }
      }
       stage('install') {
               steps {
-                sh "mvn  install"
+                sh "./mvnw  install"
              }
           }
 
