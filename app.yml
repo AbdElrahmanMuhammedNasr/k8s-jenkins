@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  k8sap:
+    container_name: k8sapp-env-test
+    image: "wizard98/k8sapp:1.0.4"
+    environment:
+      - TEST.NAME=darwin
+    ports:
+      - "9080:8080"

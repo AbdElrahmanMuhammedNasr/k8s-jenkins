@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8sapp
+spec:
+  selector:
+    matchLabels:
+       app: k8sapp
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: k8sapp
+    spec:
+      containers:
+        - name: k8sapp
+          image: wizard98/k8sapp:1.0.3
+          env:
+            - name: TEST.NAME
+              value: DARWIN
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8sapp-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30005
+  selector:
+    app:  k8sapp
