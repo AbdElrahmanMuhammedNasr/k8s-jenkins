@@ -1,0 +1,8 @@
+GET http://{minikube ip}:30005/api/msg
+Accept: application/json
+
+###
+GET http://{minikube ip}:30005/api/get-user
+Accept: application/json
+
+###

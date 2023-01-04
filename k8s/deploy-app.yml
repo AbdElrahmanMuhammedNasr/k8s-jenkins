@@ -14,10 +14,14 @@ spec:
     spec:
       containers:
         - name: k8sapp
-          image: wizard98/k8sapp:1.0.3
+          image: wizard98/k8sapp:1.1.0
           env:
             - name: TEST.NAME
               value: DARWIN
+
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgre-service:5432/postgres
+
           ports:
             - containerPort: 8080
 ---
