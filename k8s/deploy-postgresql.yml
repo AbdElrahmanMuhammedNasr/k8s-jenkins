@@ -6,7 +6,9 @@ spec:
   selector:
     matchLabels:
       app: postgre
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -22,13 +24,14 @@ spec:
               value: postgres
           ports:
             - containerPort: 5432
-#          volumeMounts:
-#            - mountPath: /var/lib/postgresql/data
-#              name: postgredb
-#      volumes:
-#          - name: postgredb
-#            persistentVolumeClaim:
-#              claimName: postgres-pv-claim
+
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+      volumes:
+          - name: postgredb
+            persistentVolumeClaim:
+              claimName: postgres-pv-claim
 ---
 apiVersion: v1
 kind: Service
